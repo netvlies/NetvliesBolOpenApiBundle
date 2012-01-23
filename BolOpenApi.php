@@ -12,6 +12,7 @@ use Netvlies\Bundle\BolOpenApiBundle\Response\SearchResultsResponse;
 // @todo method api now reflects the bol api, should we make this getProduct, getListResults, getSearchResults?
 // @todo include license
 // @todo NTH: refactor with custom Buzz Client and Message
+// @todo implement and test session id (is always null for now)
 class BolOpenApi
 {
     private $browser;
@@ -30,6 +31,22 @@ class BolOpenApi
         $this->accessKey = $accessKey;
         $this->secretAccessKey = $secretAccessKey;
         $this->browser = $browser;
+    }
+
+    /**
+     * @param string $sessionId
+     */
+    public function setSessionId($sessionId)
+    {
+        $this->sessionId = $sessionId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSessionId()
+    {
+        return $this->sessionId;
     }
 
     // @todo review number of parameters
@@ -101,9 +118,8 @@ class BolOpenApi
         return new ProductResponse($this->call($url));
     }
 
-
-    // @todo implement and test session id (is always null for now)
     /**
+     * Prepare headers, compose url and make a call
      * @param $url
      * @return \SimpleXMLElement
      * @throws \Exception
@@ -129,6 +145,7 @@ class BolOpenApi
 
         $response = $this->browser->get($scheme.$host.$url, $headers);
         $xmlElement = new \SimpleXMLElement($response->getContent());
+
         // @todo what if 404 (test with listResult('', ''))
         if ($response->getStatusCode() !== 200) {
             // @todo what if xml is empty/not valid?
