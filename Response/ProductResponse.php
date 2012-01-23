@@ -4,9 +4,8 @@ namespace Netvlies\Bundle\BolOpenApiBundle\Response;
 
 use Netvlies\Bundle\BolOpenApiBundle\Model\Product;
 
-class ProductResponse
+class ProductResponse extends AbstractResponse
 {
-    protected $sessionId;
     protected $product;
 
     public function __construct(\SimpleXMLElement $xmlElement)
@@ -28,22 +27,6 @@ class ProductResponse
     public function getProduct()
     {
         return $this->product;
-    }
-
-    /**
-     * @param string $sessionId
-     */
-    public function setSessionId($sessionId)
-    {
-        $this->sessionId = $sessionId;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSessionId()
-    {
-        return $this->sessionId;
     }
 
     /**

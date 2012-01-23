@@ -7,9 +7,8 @@ use Netvlies\Bundle\BolOpenApiBundle\Model\OriginalRequest;
 use Netvlies\Bundle\BolOpenApiBundle\Model\Product;
 use Netvlies\Bundle\BolOpenApiBundle\Model\RefinementGroup;
 
-class SearchResultsResponse
+class SearchResultsResponse extends AbstractResponse
 {
-    protected $sessionId;
     protected $products;
     protected $totalResultSize;
     protected $categories;
@@ -109,21 +108,6 @@ class SearchResultsResponse
         return $this->refinementGroups;
     }
 
-    /**
-     * @param string $sessionId
-     */
-    public function setSessionId($sessionId)
-    {
-        $this->sessionId = $sessionId;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSessionId()
-    {
-        return $this->sessionId;
-    }
 
     /**
      * @param int $totalResultSize
