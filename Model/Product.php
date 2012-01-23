@@ -1,0 +1,319 @@
+<?php
+
+namespace Netvlies\Bundle\BolOpenApiBundle\Model;
+
+use Netvlies\Bundle\BolOpenApiBundle\Model\Images;
+use Netvlies\Bundle\BolOpenApiBundle\Model\Offers;
+use Netvlies\Bundle\BolOpenApiBundle\Model\Urls;
+
+// @todo implement attributes
+// @todo what is promotions?
+class Product
+{
+    protected $id;
+    protected $title;
+    protected $subtitle;
+    protected $type;
+    protected $publisher;
+    protected $shortDescription;
+    protected $longDescription;
+    protected $releaseDate;
+    protected $ean;
+    protected $rating;
+    protected $edition;
+    protected $offers;
+    protected $urls;
+    protected $images;
+    protected $attributes;
+    protected $promotions;
+
+    /**
+     * @param $attributes
+     */
+    public function setAttributes($attributes)
+    {
+        $this->attributes = $attributes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAttributes()
+    {
+        return $this->attributes;
+    }
+
+    /**
+     * @param string $ean
+     */
+    public function setEan($ean)
+    {
+        $this->ean = $ean;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEan()
+    {
+        return $this->ean;
+    }
+
+    /**
+     * @param string $edition
+     */
+    public function setEdition($edition)
+    {
+        $this->edition = $edition;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEdition()
+    {
+        return $this->edition;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param \Netvlies\Bundle\BolOpenApiBundle\Model\Images $images
+     */
+    public function setImages(Images $images)
+    {
+        $this->images = $images;
+    }
+
+    /**
+     * @return \Netvlies\Bundle\BolOpenApiBundle\Model\Images
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * @param string $longDescription
+     */
+    public function setLongDescription($longDescription)
+    {
+        $this->longDescription = $longDescription;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLongDescription()
+    {
+        return $this->longDescription;
+    }
+
+    /**
+     * @param \Netvlies\Bundle\BolOpenApiBundle\Model\Offers $offers
+     */
+    public function setOffers(Offers $offers)
+    {
+        $this->offers = $offers;
+    }
+
+    /**
+     * @return \Netvlies\Bundle\BolOpenApiBundle\Model\Offers
+     */
+    public function getOffers()
+    {
+        return $this->offers;
+    }
+
+    /**
+     * @param $promotions
+     */
+    public function setPromotions($promotions)
+    {
+        $this->promotions = $promotions;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPromotions()
+    {
+        return $this->promotions;
+    }
+
+    /**
+     * @param string $publisher
+     */
+    public function setPublisher($publisher)
+    {
+        $this->publisher = $publisher;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPublisher()
+    {
+        return $this->publisher;
+    }
+
+    /**
+     * @param int $rating
+     */
+    public function setRating($rating)
+    {
+        $this->rating = $rating;
+    }
+
+    /**
+     * @return int Average product rating, scale of 0 – 50, representing 0 to 5 stars
+     */
+    public function getRating()
+    {
+        return $this->rating;
+    }
+
+    /**
+     * @param string $releaseDate
+     */
+    public function setReleaseDate($releaseDate)
+    {
+        $this->releaseDate = $releaseDate;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReleaseDate()
+    {
+        return $this->releaseDate;
+    }
+
+    /**
+     * @param string $shortDescription
+     */
+    public function setShortDescription($shortDescription)
+    {
+        $this->shortDescription = $shortDescription;
+    }
+
+    /**
+     * @return string
+     */
+    public function getShortDescription()
+    {
+        return $this->shortDescription;
+    }
+
+    /**
+     * @param string $subtitle
+     */
+    public function setSubtitle($subtitle)
+    {
+        $this->subtitle = $subtitle;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSubtitle()
+    {
+        return $this->subtitle;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param \Netvlies\Bundle\BolOpenApiBundle\Model\Urls $urls
+     */
+    public function setUrls(Urls $urls)
+    {
+        $this->urls = $urls;
+    }
+
+    /**
+     * @return \Netvlies\Bundle\BolOpenApiBundle\Model\Urls
+     */
+    public function getUrls()
+    {
+        return $this->urls;
+    }
+
+    /**
+     * @param \SimpleXMLElement $xmlElement
+     */
+    public function fromXml(\SimpleXMLElement $xmlElement)
+    {
+        $this->setId((string) $xmlElement->Id);
+        $this->setTitle((string) $xmlElement->Title);
+        $this->setSubtitle((string) $xmlElement->Subtitle);
+        $this->setType((string) $xmlElement->Type);
+        $this->setPublisher((string) $xmlElement->Publisher);
+        $this->setShortDescription((string) $xmlElement->ShortDescription);
+        $this->setLongDescription((string) $xmlElement->LongDescription);
+        $this->setReleaseDate((string) $xmlElement->ReleaseDate);
+        $this->setEan((string) $xmlElement->Ean);
+        $this->setRating((string) $xmlElement->Rating);
+        $this->setEdition((string) $xmlElement->Edition);
+
+        $offers = new Offers();
+        $offers->fromXml($xmlElement->Offers);
+        $this->setOffers($offers);
+
+        $urls = new Urls();
+        $urls->fromXml($xmlElement->Urls);
+        $this->setUrls($urls);
+
+        $images = new Images();
+        $images->fromXml($xmlElement->Images);
+        $this->setImages($images);
+
+        //@todo Attributes property for type specific properties
+        //@todo promotions
+
+    }
+}
