@@ -50,16 +50,7 @@ class BolOpenApi
         );
         $uri = $path . '?' . http_build_query($query_parameters);
 
-        $response = $this->call($uri);
-
-        $searchResult = new SearchResultsResponse();
-
-        if($response->getStatusCode() == 200) {
-            $xmlResponse = new \SimpleXMLElement($response->getContent());
-            $searchResult->fromXml($xmlResponse);
-        }
-
-        return $searchResult;
+        return new SearchResultsResponse($this->call($uri));
     }
 
 
@@ -90,16 +81,7 @@ class BolOpenApi
         );
         $uri = $path . '?' . http_build_query($query_parameters);
 
-        $response = $this->call($uri);
-
-        $listResult = new ListResultResponse();
-
-        if($response->getStatusCode() == 200) {
-            $xmlResponse = new \SimpleXMLElement($response->getContent());
-            $listResult->fromXml($xmlResponse);
-        }
-
-        return $listResult;
+        return new ListResultResponse($this->call($uri));
     }
 
 
@@ -115,20 +97,15 @@ class BolOpenApi
         }
 
         $url = '/openapi/services/rest/catalog/v3/products/' . $productId;
-        $response = $this->call($url);
 
-        $productResponse = new ProductResponse();
-        $xmlResponse = new \SimpleXMLElement($response->getContent());
-        $productResponse->fromXml($xmlResponse);
-
-        return $productResponse;
+        return new ProductResponse($this->call($url));
     }
 
 
     // @todo implement and test session id (is always null for now)
     /**
-     * @param string $url Url to call
-     * @return \Buzz\Message\Response
+     * @param $url
+     * @return \SimpleXMLElement
      * @throws \Exception
      */
     protected function call($url)
@@ -151,14 +128,14 @@ class BolOpenApi
         }
 
         $response = $this->browser->get($scheme.$host.$url, $headers);
+        $xmlElement = new \SimpleXMLElement($response->getContent());
         // @todo what if 404 (test with listResult('', ''))
         if ($response->getStatusCode() !== 200) {
             // @todo what if xml is empty/not valid?
-            $xmlElement = new \SimpleXMLElement($response->getContent());
             throw new \Exception($xmlElement->Status . ': ' . $xmlElement->Message, $response->getStatusCode());
         }
 
-        return $response;
+        return $xmlElement;
     }
 
     /**

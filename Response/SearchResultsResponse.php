@@ -16,11 +16,9 @@ class SearchResultsResponse
     protected $refinementGroups;
     protected $originalRequest;
 
-    public function __construct()
+    public function __construct(\SimpleXMLElement $xmlElement)
     {
-        $this->products = array();
-        $this->categories = array();
-        $this->refinementGroups = array();
+        $this->fromXml($xmlElement);
     }
 
     /**

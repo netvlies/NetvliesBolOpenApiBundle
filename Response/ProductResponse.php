@@ -9,6 +9,11 @@ class ProductResponse
     protected $sessionId;
     protected $product;
 
+    public function __construct(\SimpleXMLElement $xmlElement)
+    {
+        $this->fromXml($xmlElement);
+    }
+
     /**
      * @param \Netvlies\Bundle\BolOpenApiBundle\Model\Product $product
      */
