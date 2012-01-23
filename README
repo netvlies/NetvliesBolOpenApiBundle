@@ -4,4 +4,5 @@ TODO:
 - intro + link to bol documentation
 - describe bundle installation
 - describe use of bundle
+- describe tests: phpunit -c app/ vendor/bundles/Netvlies/Bundle/BolOpenApiBundle/
 - describe debugging (server time :))
