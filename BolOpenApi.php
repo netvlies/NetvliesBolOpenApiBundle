@@ -48,54 +48,53 @@ class BolOpenApi
         return $this->sessionId;
     }
 
-    // @todo review number of parameters
-    // @todo documentation states that term should be part of the uri path but it forces an error
-    public function searchResults($term, $categoryIdAndRefinements = null, $offset = null, $nrProducts = null, $sortingMethod = 'price', $sortingAscending = true, $includeProducts = true, $includeCategories = true, $includeRefinements = true)
+    /**
+     * @param $term
+     * @param array|null $options
+     * @return Response\SearchResultsResponse
+     */
+    public function searchResults($term, array $options = null)
     {
         $path = '/openapi/services/rest/catalog/v3/searchresults';
-        $query_parameters = array(
-            'term' => $term,
-            'categoryIdAndRefinements' => $categoryIdAndRefinements,
-            'offset' => $offset,
-            'nrProducts' => $nrProducts,
-            'sortingMethod' => $sortingMethod,
-            'sortingAscending' => (true === $sortingAscending) ? 'true' : 'false',
-            'includeProducts' => (true === $includeProducts) ? 'true' : 'false',
-            'includeCategories' => (true === $includeCategories) ? 'true' : 'false',
-            'includeRefinements' => (true === $includeRefinements) ? 'true' : 'false'
+        $default_options = array(
+            'categoryIdAndRefinements' => null,
+            'offset' => 0,
+            'nrProducts' => 10,
+            'sortingMethod' => 'price',
+            'sortingAscending' => true,
+            'includeProducts' => true,
+            'includeCategories' => true,
+            'includeRefinements' => true
         );
+        $query_parameters = array_merge($this->merge_options($default_options, $options), array(
+            'term' => $term
+        ));
         $uri = $path . '?' . http_build_query($query_parameters);
 
         return new SearchResultsResponse($this->call($uri));
     }
 
-
-    // @todo review number of parameters
     /**
      * @param string $type
      * @param string $categoryIdAndRefinements
-     * @param int|null $offset
-     * @param int|null $nrProducts
-     * @param string|null $sortingMethod
-     * @param bool $sortingAscending
-     * @param bool $includeProducts
-     * @param bool $includeCategories
-     * @param bool $includeRefinements
+     * @param array|null $options
      * @return Response\ListResultResponse
      */
-    public function listResults($type, $categoryIdAndRefinements, $offset = null, $nrProducts = null, $sortingMethod = null, $sortingAscending = false, $includeProducts = false, $includeCategories = true, $includeRefinements = true)
+    public function listResults($type, $categoryIdAndRefinements, array $options = null)
     {
         $path = '/openapi/services/rest/catalog/v3/listresults/' . $type . '/' . $categoryIdAndRefinements;
-        $query_parameters = array(
-            'offset' => $offset,
-            'nrProducts' => $nrProducts,
-            'sortingMethod' => $sortingMethod,
-            'sortingAscending' => (true === $sortingAscending) ? 'true' : 'false',
-            'includeProducts' => (true === $includeProducts) ? 'true' : 'false',
-            'includeCategories' => (true === $includeCategories) ? 'true' : 'false',
-            'includeRefinements' => (true === $includeRefinements) ? 'true' : 'false'
+        $default_options = array(
+            'offset' => null,
+            'nrProducts' => 10,
+            'sortingMethod' => null,
+            'sortingAscending' => true,
+            'includeProducts' => false,
+            'includeCategories' => true,
+            'includeRefinements' => true
         );
-        $uri = $path . '?' . http_build_query($query_parameters);
+        $options = $this->merge_options($default_options, $options);
+
+        $uri = $path . '?' . http_build_query($options);
 
         return new ListResultResponse($this->call($uri));
     }
@@ -190,4 +189,30 @@ class BolOpenApi
 
    		return $this->accessKey . ':' . base64_encode(hash_hmac('SHA256', $signature, $this->secretAccessKey, true));
    	}
+
+    /**
+     * Merges user options with default options
+     * Also casts boolean options to string ('true', 'false')
+     * @param array $default_options
+     * @param array $options
+     * @return array merged options
+     */
+    protected function merge_options(array $default_options, array $options = null)
+    {
+        if (is_null($options)) {
+            $options = $default_options;
+        }
+
+        foreach ($default_options as $key => $value) {
+            if (!isset($options[$key])) {
+                $options[$key] = $value;
+            }
+            if (is_bool($options[$key])) {
+                $options[$key] = ($options[$key]) ? 'true' : 'false';
+            }
+        }
+
+        return $options;
+    }
 }
+
