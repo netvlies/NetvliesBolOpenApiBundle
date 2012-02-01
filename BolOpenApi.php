@@ -7,11 +7,6 @@ use Netvlies\Bundle\BolOpenApiBundle\Response\ListResultResponse;
 use Netvlies\Bundle\BolOpenApiBundle\Response\ProductResponse;
 use Netvlies\Bundle\BolOpenApiBundle\Response\SearchResultsResponse;
 
-// @todo product mapping with product type properties (for now only general values are implemented)
-// @todo replace fromXml methods with dedicated mapper classes
-// @todo method api now reflects the bol api, should we make this getProduct, getListResults, getSearchResults?
-// @todo include license
-// @todo NTH: refactor with custom Buzz Client and Message
 class BolOpenApi
 {
     private $browser;
@@ -98,7 +93,6 @@ class BolOpenApi
 
         return new ListResultResponse($this->call($uri));
     }
-
 
     /**
      * @param $productId
@@ -215,4 +209,3 @@ class BolOpenApi
         return $options;
     }
 }
-

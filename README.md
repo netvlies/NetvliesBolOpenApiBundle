@@ -131,3 +131,7 @@ Further documentation about the API can be found at the [Bol.com developer cente
 Running the tests from the projectfolder of your Symfony 2 application:
 
     phpunit -c app/ vendor/bundles/Netvlies/Bundle/BolOpenApiBundle/
+
+## Todo
+- product mapping with product type properties (for now only general values are implemented)
+- write unit tests
