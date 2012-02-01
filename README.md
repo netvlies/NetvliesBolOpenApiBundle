@@ -3,6 +3,11 @@ The [Bol.com Open Api](http://developers.bol.com/documentatie/handleiding/) is a
 
 You need to have a developer key to use this API. You can get one by [registering at the Bol.com developer center](https://developers.bol.com/inloggen/?action=register).
 
+## License
+This bundle is released under the MIT license. See the complete license here:
+    
+    Resources/meta/LICENSE
+
 ## Dependencies
 - [Buzz](https://github.com/kriswallsmith/Buzz): PHP 5.3's lightweight HTTP client
 
