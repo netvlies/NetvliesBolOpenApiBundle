@@ -12,7 +12,6 @@ use Netvlies\Bundle\BolOpenApiBundle\Response\SearchResultsResponse;
 // @todo method api now reflects the bol api, should we make this getProduct, getListResults, getSearchResults?
 // @todo include license
 // @todo NTH: refactor with custom Buzz Client and Message
-// @todo implement and test session id (is always null for now)
 class BolOpenApi
 {
     private $browser;
