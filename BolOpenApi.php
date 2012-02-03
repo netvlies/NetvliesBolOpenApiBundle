@@ -92,7 +92,7 @@ class BolOpenApi
 
         $uri = $path . '?' . http_build_query($options);
 
-        return new ListResultResponse($this->call($uri));
+        return new ListResultsResponse($this->call($uri));
     }
 
     /**
