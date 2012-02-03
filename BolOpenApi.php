@@ -6,6 +6,7 @@ use Buzz\Browser;
 use Netvlies\Bundle\BolOpenApiBundle\Response\ListResultResponse;
 use Netvlies\Bundle\BolOpenApiBundle\Response\ProductResponse;
 use Netvlies\Bundle\BolOpenApiBundle\Response\SearchResultsResponse;
+use Netvlies\Bundle\BolOpenApiBundle\Exception as BolException;
 
 class BolOpenApi
 {
@@ -141,7 +142,7 @@ class BolOpenApi
         // @todo what if 404 (test with listResult('', ''))
         if ($response->getStatusCode() !== 200) {
             // @todo what if xml is empty/not valid?
-            throw new \Exception($xmlElement->Status . ': ' . $xmlElement->Message, $response->getStatusCode());
+            throw new BolException($xmlElement->Status . ': ' . $xmlElement->Message, $response->getStatusCode());
         }
 
         return $xmlElement;
