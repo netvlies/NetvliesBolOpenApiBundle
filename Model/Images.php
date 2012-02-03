@@ -10,6 +10,11 @@ class Images
     protected $large;
     protected $extraLarge;
 
+    public function __construct(\SimpleXMLElement $xmlElement)
+    {
+        $this->fromXml($xmlElement);
+    }
+
     /**
      * @param $extraLarge
      */

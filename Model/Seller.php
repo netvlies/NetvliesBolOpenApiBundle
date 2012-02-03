@@ -12,6 +12,11 @@ class Seller
     protected $logo;
     protected $url;
 
+    public function __construct(\SimpleXMLElement $xmlElement)
+    {
+        $this->fromXml($xmlElement);
+    }
+
     /**
      * @param string $displayName
      */

@@ -10,9 +10,9 @@ class RefinementGroup
     protected $name;
     protected $refinements;
 
-    public function __construct()
+    public function __construct(\SimpleXMLElement $xmlElement)
     {
-        $this->refinements = array();
+        $this->fromXml($xmlElement);
     }
 
     /**
@@ -83,8 +83,7 @@ class RefinementGroup
             } elseif($child->getName() == 'Name') {
                 $this->setName((string) $xmlElement->Name);
             } elseif($child->getName() == 'Refinement') {
-                $refinement = new Refinement();
-                $refinement->fromXml($child);
+                $refinement = new Refinement($child);
                 $this->addRefinement($refinement);
             }
         }

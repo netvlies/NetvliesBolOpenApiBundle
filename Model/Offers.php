@@ -12,9 +12,9 @@ class Offers
     protected $offers;
     protected $offerTotals;
 
-    public function __construct()
+    public function __construct(\SimpleXMLElement $xmlElement)
     {
-        $this->offers = array();
+        $this->fromXml($xmlElement);
     }
 
     /**
@@ -64,14 +64,11 @@ class Offers
     {
         foreach ($xmlElement->children() as $child) {
             if ($child->getName() == 'Offer') {
-                $offer = new Offer();
-                $offer->fromXml($child);
-
+                $offer = new Offer($child);
                 $this->addOffer($offer);
             }
             if ($child->getName() == 'OfferTotals') {
-                $offerTotals = new OfferTotals();
-                $offerTotals->fromXml($child);
+                $offerTotals = new OfferTotals($child);
                 $this->setOfferTotals($offerTotals);
             }
         }

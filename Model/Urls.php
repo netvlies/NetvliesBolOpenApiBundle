@@ -6,6 +6,11 @@ class Urls
 {
     protected $main;
 
+    public function __construct(\SimpleXMLElement $xmlElement)
+    {
+        $this->fromXml($xmlElement);
+    }
+
     /**
      * @param string $main
      */

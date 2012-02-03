@@ -27,6 +27,11 @@ class Product
     protected $attributes;
     protected $promotions;
 
+    public function __construct(\SimpleXMLElement $xmlElement)
+    {
+        $this->fromXml($xmlElement);
+    }
+
     /**
      * @param $attributes
      */
@@ -300,16 +305,13 @@ class Product
         $this->setRating((string) $xmlElement->Rating);
         $this->setEdition((string) $xmlElement->Edition);
 
-        $offers = new Offers();
-        $offers->fromXml($xmlElement->Offers);
+        $offers = new Offers($xmlElement->Offers);
         $this->setOffers($offers);
 
-        $urls = new Urls();
-        $urls->fromXml($xmlElement->Urls);
+        $urls = new Urls($xmlElement->Urls);
         $this->setUrls($urls);
 
-        $images = new Images();
-        $images->fromXml($xmlElement->Images);
+        $images = new Images($xmlElement->Images);
         $this->setImages($images);
 
         //@todo Attributes property for type specific properties

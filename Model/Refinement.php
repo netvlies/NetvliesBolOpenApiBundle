@@ -8,6 +8,11 @@ class Refinement
     protected $name;
     protected $productCount;
 
+    public function __construct(\SimpleXMLElement $xmlElement)
+    {
+        $this->fromXml($xmlElement);
+    }
+
     /**
      * @param int $id
      */

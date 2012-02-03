@@ -35,8 +35,7 @@ class ProductResponse extends AbstractResponse
     public function fromXml(\SimpleXMLElement $xmlElement)
     {
         $this->setSessionId((string) $xmlElement->SessionId);
-        $product = new Product();
-        $product->fromXml($xmlElement->Product);
+        $product = new Product($xmlElement->Product);
         $this->setProduct($product);
     }
 }

@@ -10,9 +10,9 @@ class OriginalRequest
     protected $category;
     protected $refinementGroups;
 
-    public function __construct()
+    public function __construct(\SimpleXMLElement $xmlElement)
     {
-        $this->refinementGroups = array();
+        $this->fromXml($xmlElement);
     }
 
     /**
@@ -62,12 +62,10 @@ class OriginalRequest
     {
         foreach ($xmlElement->children() as $child) {
             if($child->getName() == 'Category') {
-                $category = new Category();
-                $category->fromXml($child);
+                $category = new Category($child);
                 $this->setCategory($category);
             } elseif($child->getName() == 'RefinementGroup') {
-                $refinementGroup = new RefinementGroup();
-                $refinementGroup->fromXml($child);
+                $refinementGroup = new RefinementGroup($child);
                 $this->addRefinementGroups($refinementGroup);
             }
         }

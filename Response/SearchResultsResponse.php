@@ -132,20 +132,16 @@ class SearchResultsResponse extends AbstractResponse
     {
         foreach ($xmlElement->children() as $child) {
             if($child->getName() == 'Product') {
-                $product = new Product();
-                $product->fromXml($child);
+                $product = new Product($child);
                 $this->addProduct($product);
             } elseif($child->getName() == 'Category') {
-                $category = new Category();
-                $category->fromXml($child);
+                $category = new Category($child);
                 $this->addCategory($category);
             } elseif($child->getName() == 'RefinementGroup') {
-                $refinementGroup = new RefinementGroup();
-                $refinementGroup->fromXml($child);
+                $refinementGroup = new RefinementGroup($child);
                 $this->addRefinementGroup($refinementGroup);
             } elseif($child->getName() == 'OriginalRequest') {
-                $originalRequest = new OriginalRequest();
-                $originalRequest->fromXml($child);
+                $originalRequest = new OriginalRequest($child);
                 $this->setOriginalRequest($originalRequest);
             } elseif($child->getName() == 'SessionId') {
                 $this->setSessionId((string) $xmlElement->SessionId);

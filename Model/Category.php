@@ -13,9 +13,9 @@ class Category
     protected $categoryRefinements;
     protected $productCount;
 
-    public function __construct()
+    public function __construct(\SimpleXMLElement $xmlElement)
     {
-        $this->categoryRefinements = array();
+        $this->fromXml($xmlElement);
     }
 
     /**

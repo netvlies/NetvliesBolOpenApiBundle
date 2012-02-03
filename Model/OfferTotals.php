@@ -8,6 +8,11 @@ class OfferTotals
     protected $secondHand;
     protected $plaza;
 
+    public function __construct(\SimpleXMLElement $xmlElement)
+    {
+        $this->fromXml($xmlElement);
+    }
+
     /**
      * @param int $bol
      */

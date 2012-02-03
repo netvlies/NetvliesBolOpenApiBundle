@@ -18,6 +18,11 @@ class Offer
     protected $secondHand;
     protected $seller;
 
+    public function __construct(\SimpleXMLElement $xmlElement)
+    {
+        $this->fromXml($xmlElement);
+    }
+
     /**
      * @param $availabilityCode
      */
@@ -210,8 +215,7 @@ class Offer
         $this->setComment((string) $xmlElement->Comment);
         $this->setSecondHand((string) $xmlElement->SecondHand);
 
-        $seller = new Seller();
-        $seller->fromXml($xmlElement->Seller);
-        $this->setSeller($seller);    
+        $seller = new Seller($xmlElement->Seller);
+        $this->setSeller($seller);
     }
 }
