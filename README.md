@@ -3,6 +3,8 @@ The [Bol.com Open Api](http://developers.bol.com/documentatie/handleiding/) is a
 
 You need to have a developer key to use this API. You can get one by [registering at the Bol.com developer center](https://developers.bol.com/inloggen/?action=register).
 
+**NOTE** this bundle is in development and cannot be used in an production enviroment.
+
 ## License
 This bundle is released under the MIT license. See the complete license here:
     
@@ -134,4 +136,5 @@ Running the tests from the projectfolder of your Symfony 2 application:
 
 ## Todo
 - product mapping with product type properties (for now only general values are implemented)
-- write unit tests
+- add enumeration class for fixed options
+- increase unit test code coverage
