@@ -137,12 +137,20 @@ class BolOpenApi
         }
 
         $response = $this->browser->get($scheme.$host.$url, $headers);
-        $xmlElement = new \SimpleXMLElement($response->getContent());
-
-        // @todo what if 404 (test with listResult('', ''))
+        try{
+            $xmlElement = new \SimpleXMLElement($response->getContent());
+        } catch (\Exception $e) {
+            throw new BolException('Error parsing the xml as SimpleXMLElement', null, $e);
+        }
         if ($response->getStatusCode() !== 200) {
-            // @todo what if xml is empty/not valid?
             throw new BolException($xmlElement->Status . ': ' . $xmlElement->Message, $response->getStatusCode());
+        }
+        if (!in_array($xmlElement->getName(), array(
+            'ListResultResponse',
+            'SearchResultsResponse',
+            'ProductResponse'
+        ))) {
+            throw new BolException('Invalid Xml result');
         }
 
         return $xmlElement;
