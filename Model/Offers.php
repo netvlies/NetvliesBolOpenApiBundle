@@ -5,8 +5,6 @@ namespace Netvlies\Bundle\BolOpenApiBundle\Model;
 use Netvlies\Bundle\BolOpenApiBundle\Model\Offer;
 use Netvlies\Bundle\BolOpenApiBundle\Model\OfferTotals;
 
-// @todo strange data structure: product->offers contains 1 Offers object Offers->offers contains multiple Offer objects (copied from bol API structure)
-// @todo documentation states that Product->Offers contains Offer but it contains Offers
 class Offers
 {
     protected $offers;
