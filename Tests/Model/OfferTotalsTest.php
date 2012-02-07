@@ -7,32 +7,25 @@ use Netvlies\Bundle\BolOpenApiBundle\Model\OfferTotals;
 class OfferTotalsTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Netvlies\Bundle\BolOpenApiBundle\Model\Offer
+     * @var \Netvlies\Bundle\BolOpenApiBundle\Model\OfferTotals
      */
-    private $offer;
+    private $offerTotals;
 
     public function setUp()
     {
-        $simpleXmlElement = new \SimpleXMLElement(__DIR__.'/../fixtures/offer.xml', 0 , true);
-        $this->offer = new Offer($simpleXmlElement);
+        $simpleXmlElement = new \SimpleXMLElement(__DIR__.'/../fixtures/offer_totals.xml', 0 , true);
+        $this->offerTotals = new OfferTotals($simpleXmlElement);
     }
 
-    public function testIsOffer()
+    public function testIsOfferTotals()
     {
-        $this->assertTrue($this->offer instanceof \Netvlies\Bundle\BolOpenApiBundle\Model\Offer);
+        $this->assertTrue($this->offerTotals instanceof \Netvlies\Bundle\BolOpenApiBundle\Model\OfferTotals);
     }
 
     public function testIsValid()
     {
-        $this->assertEquals($this->offer->getId(), 1004004007093471);
-        $this->assertEquals($this->offer->getState(), 'Nieuw');
-        $this->assertEquals($this->offer->getPrice(), 49.99);
-        $this->assertEquals($this->offer->getAvailabilityCode(), 170);
-        $this->assertEquals($this->offer->getAvailabilityDescription(), 'Vandaag voor 22.30 uur besteld, morgen in huis.');
-    }
-
-    public function testSeller()
-    {
-        $this->assertTrue($this->offer->getSeller() instanceof \Netvlies\Bundle\BolOpenApiBundle\Model\Seller);
+        $this->assertEquals(1, $this->offerTotals->getBolCom());
+        $this->assertEquals(0, $this->offerTotals->getPlaza());
+        $this->assertEquals(0, $this->offerTotals->getSecondHand());
     }
 }

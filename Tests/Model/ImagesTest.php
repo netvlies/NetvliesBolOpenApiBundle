@@ -24,11 +24,11 @@ class ImagesTest extends \PHPUnit_Framework_TestCase
 
     public function testIsValid()
     {
-        $this->assertEquals($this->images->getExtraSmall(), 'http://s-s-bol.com/imgbase0/imagebase/mini/FC/1/7/4/3/1004004007093471.jpg');
-        $this->assertEquals($this->images->getSmall(), 'http://s-s-bol.com/imgbase0/imagebase/tout/FC/1/7/4/3/1004004007093471.jpg');
-        $this->assertEquals($this->images->getMedium(), 'http://s-s-bol.com/imgbase0/imagebase/thumb/FC/1/7/4/3/1004004007093471.jpg');
-        $this->assertEquals($this->images->getLarge(), 'http://s-s-bol.com/imgbase0/imagebase/regular/FC/1/7/4/3/1004004007093471.jpg');
-        $this->assertEquals($this->images->getExtraLarge(), 'http://s-s-bol.com/imgbase0/imagebase/large/FC/1/7/4/3/1004004007093471.jpg');
+        $this->assertEquals($this->images->getExtraSmall(), 'http://s-s-bolCom.com/imgbase0/imagebase/mini/FC/1/7/4/3/1004004007093471.jpg');
+        $this->assertEquals($this->images->getSmall(), 'http://s-s-bolCom.com/imgbase0/imagebase/tout/FC/1/7/4/3/1004004007093471.jpg');
+        $this->assertEquals($this->images->getMedium(), 'http://s-s-bolCom.com/imgbase0/imagebase/thumb/FC/1/7/4/3/1004004007093471.jpg');
+        $this->assertEquals($this->images->getLarge(), 'http://s-s-bolCom.com/imgbase0/imagebase/regular/FC/1/7/4/3/1004004007093471.jpg');
+        $this->assertEquals($this->images->getExtraLarge(), 'http://s-s-bolCom.com/imgbase0/imagebase/large/FC/1/7/4/3/1004004007093471.jpg');
     }
 
 }
