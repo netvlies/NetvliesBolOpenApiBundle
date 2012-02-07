@@ -4,7 +4,7 @@ namespace Netvlies\Bundle\BolOpenApiBundle\Model;
 
 class OfferTotals
 {
-    protected $bol;
+    protected $bolCom;
     protected $secondHand;
     protected $plaza;
 
@@ -16,17 +16,17 @@ class OfferTotals
     /**
      * @param int $bol
      */
-    public function setBol($bol)
+    public function setBolCom($bol)
     {
-        $this->bol = $bol;
+        $this->bolCom = $bol;
     }
 
     /**
      * @return int
      */
-    public function getBol()
+    public function getBolCom()
     {
-        return $this->bol;
+        return $this->bolCom;
     }
 
     /**
@@ -66,7 +66,7 @@ class OfferTotals
      */
     public function fromXml(\SimpleXMLElement $xmlElement)
     {
-        $this->setBol((string) $xmlElement->Bol);
+        $this->setBolCom((string) $xmlElement->{"Bol.com"});
         $this->setPlaza((string) $xmlElement->Plaza);
         $this->setSecondHand((string) $xmlElement->SecondHand);
     }
