@@ -3,7 +3,7 @@
 namespace Netvlies\Bundle\BolOpenApiBundle;
 
 use Buzz\Browser;
-use Netvlies\Bundle\BolOpenApiBundle\Response\ListResultResponse;
+use Netvlies\Bundle\BolOpenApiBundle\Response\ListResultsResponse;
 use Netvlies\Bundle\BolOpenApiBundle\Response\ProductResponse;
 use Netvlies\Bundle\BolOpenApiBundle\Response\SearchResultsResponse;
 use Netvlies\Bundle\BolOpenApiBundle\Exception as BolException;
