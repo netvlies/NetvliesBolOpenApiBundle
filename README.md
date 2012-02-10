@@ -23,7 +23,7 @@ Add the following to your `deps` file:
         target=/Buzz
 
     [NetvliesBolOpenApiBundle]
-        git=git@bitbucket.org:netvlies/sf2bundle-bol.git
+        git=git@github.com:netvlies/NetvliesBolOpenApiBundle.git
         target=/bundles/Netvlies/Bundle/BolOpenApiBundle
 
 Next, run the vendors script:
