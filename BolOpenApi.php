@@ -145,6 +145,9 @@ class BolOpenApi
         }
 
         $response = $this->browser->get($scheme.$host.$url, $headers);
+        if ($response->getStatusCode() === 503) {
+            throw new BolException('Service Temporarily Unavailable', 503);
+        }
         try{
             $xmlElement = new \SimpleXMLElement($response->getContent());
         } catch (\Exception $e) {
