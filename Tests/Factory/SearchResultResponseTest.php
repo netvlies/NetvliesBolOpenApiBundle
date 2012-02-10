@@ -33,13 +33,17 @@ class SearchResultsResponseTest extends \PHPUnit_Framework_TestCase
 
     public function testIsValid()
     {
-        $this->assertTrue(count($this->searchResultsResponse->getCategories()) === 3);
-        $this->assertTrue(array_shift($this->searchResultsResponse->getCategories()) instanceof \Netvlies\Bundle\BolOpenApiBundle\Model\Category);
+        $categories = $this->searchResultsResponse->getCategories();
+        $products = $this->searchResultsResponse->getProducts();
+        $refinementGroups = $this->searchResultsResponse->getRefinementGroups();
+
+        $this->assertTrue(count($categories) === 3);
+        $this->assertTrue(array_shift($categories) instanceof \Netvlies\Bundle\BolOpenApiBundle\Model\Category);
         $this->assertTrue($this->searchResultsResponse->getOriginalRequest() instanceof \Netvlies\Bundle\BolOpenApiBundle\Model\OriginalRequest);
-        $this->assertTrue(count($this->searchResultsResponse->getProducts()) === 5);
-        $this->assertTrue(array_shift($this->searchResultsResponse->getProducts()) instanceof \Netvlies\Bundle\BolOpenApiBundle\Model\Product);
-        $this->assertTrue(count($this->searchResultsResponse->getRefinementGroups()) === 4);
-        $this->assertTrue(array_shift($this->searchResultsResponse->getRefinementGroups()) instanceof \Netvlies\Bundle\BolOpenApiBundle\Model\RefinementGroup);
+        $this->assertTrue(count($products) === 5);
+        $this->assertTrue(array_shift($products) instanceof \Netvlies\Bundle\BolOpenApiBundle\Model\Product);
+        $this->assertTrue(count($refinementGroups) === 4);
+        $this->assertTrue(array_shift($refinementGroups) instanceof \Netvlies\Bundle\BolOpenApiBundle\Model\RefinementGroup);
         $this->assertEquals($this->searchResultsResponse->getTotalResultSize(), 113);
         $this->assertEquals($this->searchResultsResponse->getSessionId(), '0DD6ACF0-780A-4F05-84A7-076F5C689BC2');
     }
