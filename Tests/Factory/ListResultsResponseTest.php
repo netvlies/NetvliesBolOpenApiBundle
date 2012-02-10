@@ -2,7 +2,7 @@
 
 namespace Netvlies\Bundle\BolOpenApiBundle\Tests\Model;
 
-use Netvlies\Bundle\BolOpenApiBundle\Response\ListResultsResponse;
+use Netvlies\Bundle\BolOpenApiBundle\Factory\ResponseFactory;
 
 class ListResultsResponseTest extends \PHPUnit_Framework_TestCase
 {
@@ -14,7 +14,8 @@ class ListResultsResponseTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $simpleXmlElement = new \SimpleXMLElement(__DIR__.'/../fixtures/list_results_response.xml', 0 , true);
-        $this->listResultsResponse = new ListResultsResponse($simpleXmlElement);
+        $factory = new ResponseFactory();
+        $this->listResultsResponse = $factory->createListResultsResponse($simpleXmlElement);
     }
 
     public function testIsListResultsResponse()

@@ -21,11 +21,6 @@ class Category
     protected $categoryRefinements;
     protected $productCount;
 
-    public function __construct(\SimpleXMLElement $xmlElement)
-    {
-        $this->fromXml($xmlElement);
-    }
-
     /**
      * @param \Netvlies\Bundle\BolOpenApi\Bundle\CategoryRefinement $categoryRefinement
      */
@@ -96,15 +91,5 @@ class Category
     public function getProductCount()
     {
         return $this->productCount;
-    }
-
-    /**
-     * @param \SimpleXMLElement $xmlElement
-     */
-    public function fromXml(\SimpleXMLElement $xmlElement)
-    {
-        $this->setId((string) $xmlElement->Id);
-        $this->setName((string) $xmlElement->Name);
-        $this->setProductCount((string) $xmlElement->ProductCount);
     }
 }

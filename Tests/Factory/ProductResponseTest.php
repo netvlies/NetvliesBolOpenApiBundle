@@ -10,7 +10,7 @@
 
 namespace Netvlies\Bundle\BolOpenApiBundle\Tests\Model;
 
-use Netvlies\Bundle\BolOpenApiBundle\Response\ProductResponse;
+use Netvlies\Bundle\BolOpenApiBundle\Factory\ResponseFactory;
 
 class ProductResponseTest extends \PHPUnit_Framework_TestCase
 {
@@ -22,7 +22,8 @@ class ProductResponseTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $simpleXmlElement = new \SimpleXMLElement(__DIR__.'/../fixtures/product_response.xml', 0 , true);
-        $this->productResponse = new ProductResponse($simpleXmlElement);
+        $factory = new ResponseFactory();
+        $this->productResponse = $factory->createProductResponse($simpleXmlElement);
     }
 
     public function testIsProductResponse()

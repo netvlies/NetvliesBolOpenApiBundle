@@ -18,11 +18,6 @@ class Offers
     protected $offers;
     protected $offerTotals;
 
-    public function __construct(\SimpleXMLElement $xmlElement)
-    {
-        $this->fromXml($xmlElement);
-    }
-
     /**
      * @param \Netvlies\Bundle\BolOpenApiBundle\Model\Offer $offer
      */
@@ -61,22 +56,5 @@ class Offers
     public function getOfferTotals()
     {
         return $this->offerTotals;
-    }
-
-    /**
-     * @param \SimpleXMLElement $xmlElement
-     */
-    public function fromXml(\SimpleXMLElement $xmlElement)
-    {
-        foreach ($xmlElement->children() as $child) {
-            if ($child->getName() == 'Offer') {
-                $offer = new Offer($child);
-                $this->addOffer($offer);
-            }
-            if ($child->getName() == 'OfferTotals') {
-                $offerTotals = new OfferTotals($child);
-                $this->setOfferTotals($offerTotals);
-            }
-        }
     }
 }

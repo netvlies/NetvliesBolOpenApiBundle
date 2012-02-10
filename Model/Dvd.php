@@ -47,11 +47,25 @@ class Dvd extends Product
      */
     protected $bluRay;
 
-    public function setActors($actors)
+    /**
+     * @param \Netvlies\Bundle\BolOpenApiBundle\Model\Entity
+     */
+    public function addActor(\Netvlies\Bundle\BolOpenApiBundle\Model\Entity $actor)
+    {
+        $this->actors[] = $actor;
+    }
+
+    /**
+     * @param array $actors
+     */
+    public function setActors(array $actors)
     {
         $this->actors = $actors;
     }
 
+    /**
+     * @return \Netvlies\Bundle\BolOpenApiBundle\Model\Entity[]
+     */
     public function getActors()
     {
         return $this->actors;
@@ -73,11 +87,25 @@ class Dvd extends Product
         return $this->bluRay;
     }
 
-    public function setDirectors($directors)
+    /**
+     * @param \Netvlies\Bundle\BolOpenApiBundle\Model\Entity
+     */
+    public function addDirector(\Netvlies\Bundle\BolOpenApiBundle\Model\Entity $director)
+    {
+        $this->directors[] = $director;
+    }
+
+    /**
+     * @param array $directors
+     */
+    public function setDirectors(array $directors)
     {
         $this->directors = $directors;
     }
 
+    /**
+     * @return \Netvlies\Bundle\BolOpenApiBundle\Model\Entity[]
+     */
     public function getDirectors()
     {
         return $this->directors;

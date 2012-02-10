@@ -18,11 +18,6 @@ class RefinementGroup
     protected $name;
     protected $refinements;
 
-    public function __construct(\SimpleXMLElement $xmlElement)
-    {
-        $this->fromXml($xmlElement);
-    }
-
     /**
      * @param int $id
      */
@@ -77,23 +72,5 @@ class RefinementGroup
     public function getRefinements()
     {
         return $this->refinements;
-    }
-
-    /**
-     * @param \SimpleXMLElement $xmlElement
-     */
-    public function fromXml(\SimpleXMLElement $xmlElement)
-    {
-        // @todo weird xml structure with multiple Refinements without Refinement parent element
-        foreach ($xmlElement->children() as $child) {
-            if($child->getName() == 'Id') {
-                $this->setId((string) $xmlElement->Id);
-            } elseif($child->getName() == 'Name') {
-                $this->setName((string) $xmlElement->Name);
-            } elseif($child->getName() == 'Refinement') {
-                $refinement = new Refinement($child);
-                $this->addRefinement($refinement);
-            }
-        }
     }
 }

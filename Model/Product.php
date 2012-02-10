@@ -35,11 +35,6 @@ class Product
     protected $attributes;
     protected $promotions;
 
-    public function __construct(\SimpleXMLElement $xmlElement)
-    {
-        $this->fromXml($xmlElement);
-    }
-
     /**
      * @param $attributes
      */
@@ -294,36 +289,5 @@ class Product
     public function getUrls()
     {
         return $this->urls;
-    }
-
-    /**
-     * @param \SimpleXMLElement $xmlElement
-     */
-    public function fromXml(\SimpleXMLElement $xmlElement)
-    {
-        $this->setId((string) $xmlElement->Id);
-        $this->setTitle((string) $xmlElement->Title);
-        $this->setSubtitle((string) $xmlElement->Subtitle);
-        $this->setType((string) $xmlElement->Type);
-        $this->setPublisher((string) $xmlElement->Publisher);
-        $this->setShortDescription((string) $xmlElement->ShortDescription);
-        $this->setLongDescription((string) $xmlElement->LongDescription);
-        $this->setReleaseDate((string) $xmlElement->ReleaseDate);
-        $this->setEan((string) $xmlElement->Ean);
-        $this->setRating((string) $xmlElement->Rating);
-        $this->setEdition((string) $xmlElement->Edition);
-
-        $offers = new Offers($xmlElement->Offers);
-        $this->setOffers($offers);
-
-        $urls = new Urls($xmlElement->Urls);
-        $this->setUrls($urls);
-
-        $images = new Images($xmlElement->Images);
-        $this->setImages($images);
-
-        //@todo Attributes property for type specific properties
-        //@todo promotions
-
     }
 }

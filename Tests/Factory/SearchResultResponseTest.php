@@ -10,7 +10,7 @@
 
 namespace Netvlies\Bundle\BolOpenApiBundle\Tests\Model;
 
-use Netvlies\Bundle\BolOpenApiBundle\Response\SearchResultsResponse;
+use Netvlies\Bundle\BolOpenApiBundle\Factory\ResponseFactory;
 
 class SearchResultsResponseTest extends \PHPUnit_Framework_TestCase
 {
@@ -22,7 +22,8 @@ class SearchResultsResponseTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $simpleXmlElement = new \SimpleXMLElement(__DIR__.'/../fixtures/search_results_response.xml', 0 , true);
-        $this->searchResultsResponse = new SearchResultsResponse($simpleXmlElement);
+        $factory = new ResponseFactory();
+        $this->searchResultsResponse = $factory->createSearchResultsResponse($simpleXmlElement);
     }
 
     public function testIsSearchResultsResponse()

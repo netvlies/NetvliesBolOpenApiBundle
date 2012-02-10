@@ -16,11 +16,6 @@ class Refinement
     protected $name;
     protected $productCount;
 
-    public function __construct(\SimpleXMLElement $xmlElement)
-    {
-        $this->fromXml($xmlElement);
-    }
-
     /**
      * @param int $id
      */
@@ -67,15 +62,5 @@ class Refinement
     public function getProductCount()
     {
         return $this->productCount;
-    }
-
-    /**
-     * @param \SimpleXMLElement $xmlElement
-     */
-    public function fromXml(\SimpleXMLElement $xmlElement)
-    {
-        $this->setId((string) $xmlElement->Id);
-        $this->setName((string) $xmlElement->Name);
-        $this->setProductCount((string) $xmlElement->ProductCount);
     }
 }

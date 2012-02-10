@@ -12,11 +12,6 @@ class Seller
     protected $logo;
     protected $url;
 
-    public function __construct(\SimpleXMLElement $xmlElement)
-    {
-        $this->fromXml($xmlElement);
-    }
-
     /**
      * @param string $displayName
      */
@@ -127,19 +122,5 @@ class Seller
     public function getUrl()
     {
         return $this->url;
-    }
-
-    /**
-     * @param \SimpleXMLElement $xmlElement
-     */
-    public function fromXml(\SimpleXMLElement $xmlElement)
-    {
-        $this->setId((string) $xmlElement->Id);
-        $this->setDisplayName((string) $xmlElement->DisplayName);
-        $this->setNumberOfReviews((string) $xmlElement->NumberOfReviews);
-        $this->setLogo((string) $xmlElement->Logo);
-        $this->setOverallRating((string) $xmlElement->OverallRating);
-        $this->setTermsUrl((string) $xmlElement->TermsUrl);
-        $this->setUrl((string) $xmlElement->Url);
     }
 }

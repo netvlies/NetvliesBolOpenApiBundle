@@ -26,11 +26,6 @@ class Offer
     protected $secondHand;
     protected $seller;
 
-    public function __construct(\SimpleXMLElement $xmlElement)
-    {
-        $this->fromXml($xmlElement);
-    }
-
     /**
      * @param $availabilityCode
      */
@@ -205,25 +200,5 @@ class Offer
     public function getState()
     {
         return $this->state;
-    }
-
-    /**
-     * @param \SimpleXMLElement $xmlElement
-     */
-    public function fromXml(\SimpleXMLElement $xmlElement)
-    {
-        $this->setId((string) $xmlElement->Id);
-        $this->setFirstEdition((string) $xmlElement->FirstEdition);
-        $this->setSpecialEdition((string) $xmlElement->SpecialEdition);
-        $this->setState((string) $xmlElement->State);
-        $this->setPrice((string) $xmlElement->Price);
-        $this->setListPrice((string) $xmlElement->ListPrice);
-        $this->setAvailabilityCode((string) $xmlElement->AvailabilityCode);
-        $this->setAvailabilityDescription((string) $xmlElement->AvailabilityDescription);
-        $this->setComment((string) $xmlElement->Comment);
-        $this->setSecondHand((string) $xmlElement->SecondHand);
-
-        $seller = new Seller($xmlElement->Seller);
-        $this->setSeller($seller);
     }
 }

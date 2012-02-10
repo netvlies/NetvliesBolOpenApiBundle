@@ -16,11 +16,6 @@ class ProductResponse extends AbstractResponse
 {
     protected $product;
 
-    public function __construct(\SimpleXMLElement $xmlElement)
-    {
-        $this->fromXml($xmlElement);
-    }
-
     /**
      * @param \Netvlies\Bundle\BolOpenApiBundle\Model\Product $product
      */
@@ -35,15 +30,5 @@ class ProductResponse extends AbstractResponse
     public function getProduct()
     {
         return $this->product;
-    }
-
-    /**
-     * @param \SimpleXMLElement $xmlElement
-     */
-    public function fromXml(\SimpleXMLElement $xmlElement)
-    {
-        $this->setSessionId((string) $xmlElement->SessionId);
-        $product = new Product($xmlElement->Product);
-        $this->setProduct($product);
     }
 }

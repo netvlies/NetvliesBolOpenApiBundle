@@ -14,6 +14,8 @@ use Buzz\Browser;
 use Netvlies\Bundle\BolOpenApiBundle\Response\ListResultsResponse;
 use Netvlies\Bundle\BolOpenApiBundle\Response\ProductResponse;
 use Netvlies\Bundle\BolOpenApiBundle\Response\SearchResultsResponse;
+
+use Netvlies\Bundle\BolOpenApiBundle\Factory\ResponseFactory;
 use Netvlies\Bundle\BolOpenApiBundle\Exception as BolException;
 
 class BolOpenApi
@@ -75,7 +77,8 @@ class BolOpenApi
         ));
         $uri = $path . '?' . http_build_query($query_parameters);
 
-        return new SearchResultsResponse($this->call($uri));
+        $obj = new ResponseFactory();
+        return $obj->createSearchResultsResponse($this->call($uri));
     }
 
     /**
@@ -100,7 +103,8 @@ class BolOpenApi
 
         $uri = $path . '?' . http_build_query($options);
 
-        return new ListResultsResponse($this->call($uri));
+        $obj = new ResponseFactory();
+        return $obj->createListResultsResponse($this->call($uri));
     }
 
     /**
@@ -114,9 +118,10 @@ class BolOpenApi
             throw new \InvalidArgumentException('Given $productId as float, possible integer overflow. Try passing $productId as string')  ;
         }
 
-        $url = '/openapi/services/rest/catalog/v3/products/' . $productId;
+        $uri = '/openapi/services/rest/catalog/v3/products/' . $productId;
 
-        return new ProductResponse($this->call($url));
+        $obj = new ResponseFactory();
+        return $obj->createProductResponse($this->call($uri));
     }
 
     /**
@@ -194,7 +199,7 @@ class BolOpenApi
             $queryParamsCount = count($parsedQuery);
             $i = 0;
             foreach ($parsedQuery as $key => $value) {
-                $signature .= '&' . $key . '=' . rawurlencode($value);
+                $signature .= '&' . $key . '=' . $value;
                 if (++$i < $queryParamsCount) {
                     $signature .= "\n";
                 }

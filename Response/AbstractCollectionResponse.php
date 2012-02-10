@@ -23,11 +23,6 @@ abstract class AbstractCollectionResponse extends AbstractResponse
     protected $refinementGroups;
     protected $originalRequest;
 
-    public function __construct(\SimpleXMLElement $xmlElement)
-    {
-        $this->fromXml($xmlElement);
-    }
-
     /**
      * @param \Netvlies\Bundle\BolOpenApiBundle\Model\Category $category
      */
@@ -131,31 +126,5 @@ abstract class AbstractCollectionResponse extends AbstractResponse
     public function getTotalResultSize()
     {
         return $this->totalResultSize;
-    }
-
-    /**
-     * @param \SimpleXMLElement $xmlElement
-     */
-    public function fromXml(\SimpleXMLElement $xmlElement)
-    {
-        foreach ($xmlElement->children() as $child) {
-            if($child->getName() == 'Product') {
-                $product = new Product($child);
-                $this->addProduct($product);
-            } elseif($child->getName() == 'Category') {
-                $category = new Category($child);
-                $this->addCategory($category);
-            } elseif($child->getName() == 'RefinementGroup') {
-                $refinementGroup = new RefinementGroup($child);
-                $this->addRefinementGroup($refinementGroup);
-            } elseif($child->getName() == 'OriginalRequest') {
-                $originalRequest = new OriginalRequest($child);
-                $this->setOriginalRequest($originalRequest);
-            } elseif($child->getName() == 'SessionId') {
-                $this->setSessionId((string) $xmlElement->SessionId);
-            } elseif($child->getName() == 'TotalResultSize') {
-                $this->setTotalResultSize((string) $xmlElement->TotalResultSize);
-            }
-        }
     }
 }

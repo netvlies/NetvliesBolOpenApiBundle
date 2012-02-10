@@ -33,7 +33,7 @@ class Music extends Product
     protected $NumberOfPieces;
 
     /**
-     * @var array
+     * @var \Netvlies\Bundle\BolOpenApiBundle\Model\Entity[]
      */
     protected $artists;
 
@@ -54,6 +54,14 @@ class Music extends Product
     }
 
     /**
+     * @param \Netvlies\Bundle\BolOpenApiBundle\Model\Entity
+     */
+    public function addArtist(\Netvlies\Bundle\BolOpenApiBundle\Model\Entity $artist)
+    {
+        $this->artists[] = $artist;
+    }
+
+    /**
      * @param array $artists
      */
     public function setArtists(array $artists)
@@ -62,7 +70,7 @@ class Music extends Product
     }
 
     /**
-     * @return array
+     * @return \Netvlies\Bundle\BolOpenApiBundle\Model\Entity[]
      */
     public function getArtists()
     {

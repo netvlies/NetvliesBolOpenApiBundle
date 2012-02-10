@@ -16,11 +16,6 @@ class OfferTotals
     protected $secondHand;
     protected $plaza;
 
-    public function __construct(\SimpleXMLElement $xmlElement)
-    {
-        $this->fromXml($xmlElement);
-    }
-
     /**
      * @param int $bol
      */
@@ -67,15 +62,5 @@ class OfferTotals
     public function getSecondHand()
     {
         return $this->secondHand;
-    }
-
-    /**
-     * @param \SimpleXMLElement $xmlElement
-     */
-    public function fromXml(\SimpleXMLElement $xmlElement)
-    {
-        $this->setBolCom((string) $xmlElement->{"Bol.com"});
-        $this->setPlaza((string) $xmlElement->Plaza);
-        $this->setSecondHand((string) $xmlElement->SecondHand);
     }
 }

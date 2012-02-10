@@ -33,7 +33,7 @@ class Book extends Product
     protected $languageDescription;
 
     /**
-     * @var array
+     * @var \Netvlies\Bundle\BolOpenApiBundle\Model\Entity[]
      */
     protected $authors;
 
@@ -63,15 +63,23 @@ class Book extends Product
     protected $printingRestrictions;
 
     /**
+     * @param \Netvlies\Bundle\BolOpenApiBundle\Model\Entity
+     */
+    public function addAuthor(\Netvlies\Bundle\BolOpenApiBundle\Model\Entity $author)
+    {
+        $this->authors[] = $author;
+    }
+
+    /**
      * @param array $authors
      */
-    public function setAuthors($authors)
+    public function setAuthors(array $authors)
     {
         $this->authors = $authors;
     }
 
     /**
-     * @return array
+     * @return \Netvlies\Bundle\BolOpenApiBundle\Model\Entity[]
      */
     public function getAuthors()
     {

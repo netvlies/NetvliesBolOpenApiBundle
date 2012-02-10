@@ -18,11 +18,6 @@ class OriginalRequest
     protected $category;
     protected $refinementGroups;
 
-    public function __construct(\SimpleXMLElement $xmlElement)
-    {
-        $this->fromXml($xmlElement);
-    }
-
     /**
      * @param \Netvlies\Bundle\BolOpenApiBundle\Model\Category $category
      */
@@ -61,21 +56,5 @@ class OriginalRequest
     public function getRefinementGroups()
     {
         return $this->refinementGroups;
-    }
-
-    /**
-     * @param \SimpleXMLElement $xmlElement
-     */
-    public function fromXml(\SimpleXMLElement $xmlElement)
-    {
-        foreach ($xmlElement->children() as $child) {
-            if($child->getName() == 'Category') {
-                $category = new Category($child);
-                $this->setCategory($category);
-            } elseif($child->getName() == 'RefinementGroup') {
-                $refinementGroup = new RefinementGroup($child);
-                $this->addRefinementGroups($refinementGroup);
-            }
-        }
     }
 }
