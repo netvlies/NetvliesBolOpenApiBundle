@@ -17,16 +17,14 @@ use Symfony\Component\ClassLoader\UniversalClassLoader;
 
 $loader = new UniversalClassLoader();
 $loader->registerNamespaces(array(
-    'Symfony'                => array($vendorDir.'/symfony/src'),
-));
-$loader->registerPrefixes(array(
-    'Twig_'            => $vendorDir.'/twig/lib',
+    'Symfony'             => array($vendorDir.'/symfony/src'),
+    'Buzz'                => array($vendorDir.'/Buzz/lib'),
 ));
 $loader->register();
 
 spl_autoload_register(function($class) {
     if (0 === strpos($class, 'Netvlies\\Bundle\\BolOpenApiBundle\\')) {
-        $path = __DIR__.'/../'.implode('/', array_slice(explode('\\', $class), 2)).'.php';
+        $path = __DIR__.'/../'.implode('/', array_slice(explode('\\', $class), 3)).'.php';
         if (!stream_resolve_include_path($path)) {
             return false;
         }
