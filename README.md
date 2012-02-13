@@ -1,4 +1,7 @@
 ## BolOpenApiBundle
+
+[![Build Status](https://secure.travis-ci.org/netvlies/NetvliesBolOpenApiBundle.png)](http://travis-ci.org/netvlies/NetvliesBolOpenApiBundle)
+
 The [Bol.com Open Api](http://developers.bol.com/documentatie/handleiding/) is an RESTfull API wich you can use to communicate with the Bol.com webshop catalogue. This bundle makes it very easy to use this API as a service within your Symfony 2 application.
 
 You need to have a developer key to use this API. You can get one by [registering at the Bol.com developer center](https://developers.bol.com/inloggen/?action=register).
