@@ -15,7 +15,6 @@ use Netvlies\Bundle\BolOpenApiBundle\Model\Offers;
 use Netvlies\Bundle\BolOpenApiBundle\Model\Urls;
 
 // @todo implement attributes
-// @todo what is promotions?
 class Product
 {
     protected $id;

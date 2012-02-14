@@ -13,7 +13,6 @@ namespace Netvlies\Bundle\BolOpenApiBundle\Model;
 use Netvlies\Bundle\BolOpenApi\Bundle\CategoryRefinement;
 
 // @todo categoryRefinement aren't mappend
-// @todo productCount misses in Documentation
 class Category
 {
     protected $id;
