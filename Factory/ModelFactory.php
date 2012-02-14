@@ -284,7 +284,6 @@ class ModelFactory
     public function createRefinementGroup(\SimpleXMLElement $xmlElement)
     {
         $refinementGroup = new RefinementGroup();
-        // @todo weird xml structure with multiple Refinements without Refinement parent element
         foreach ($xmlElement->children() as $child) {
             if($child->getName() == 'Id') {
                 $refinementGroup->setId((string) $xmlElement->Id);
