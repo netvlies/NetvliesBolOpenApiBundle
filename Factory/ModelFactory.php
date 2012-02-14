@@ -76,7 +76,7 @@ class ModelFactory
                 $product->setDisplayDiameter((string) $xmlElement->DisplayDiameter);
                 $product->setInternalMemory((string) $xmlElement->InternalMemory);
                 $product->setManufacturer((string) $xmlElement->Manufacturer);
-                $product->setManufacturerProductNumer((string) $xmlElement->ManufacturerProductNumer);
+                $product->setManufacturerProductNumber((string) $xmlElement->ManufacturerProductNumber);
                 $product->setOperatingSystem((string) $xmlElement->OperatingSystem);
                 $product->setPlatformCode((string) $xmlElement->PlatformCode);
                 $product->setPlatformDescription((string) $xmlElement->PlatformDescription);
@@ -120,7 +120,7 @@ class ModelFactory
                 $product->setHdmiPorts((string) $xmlElement->HdmiPorts);
                 $product->setLightSensitivityStandard((string) $xmlElement->LightSensitivityStandard);
                 $product->setManufacturer((string) $xmlElement->Manufacturer);
-                $product->setManufacturerProductNumber((string) $xmlElement->ManufacturerProductNumber);
+                $product->setManufacturerProductNumber((string) $xmlElement->ManufacturerProductNumer);
                 $product->setMaxPixels((string) $xmlElement->MaxPixels);
                 $product->setMaxResolution((string) $xmlElement->MaxResolution);
                 $product->setMaxWeight((string) $xmlElement->MaxWeight);
