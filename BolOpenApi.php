@@ -62,17 +62,17 @@ class BolOpenApi
     public function searchResults($term, array $options = null)
     {
         $path = '/openapi/services/rest/catalog/v3/searchresults';
-        $default_options = array(
-            'categoryIdAndRefinements' => null,
-            'offset' => 0,
-            'nrProducts' => 10,
-            'sortingMethod' => 'price',
-            'sortingAscending' => true,
-            'includeProducts' => true,
-            'includeCategories' => true,
-            'includeRefinements' => true
+        $defaulOptions = array(
+            'categoryIdAndRefinements'  => null,
+            'offset'                    => 0,
+            'nrProducts'                => 10,
+            'sortingMethod'             => 'price',
+            'sortingAscending'          => true,
+            'includeProducts'           => true,
+            'includeCategories'         => true,
+            'includeRefinements'        => true
         );
-        $query_parameters = array_merge($this->merge_options($default_options, $options), array(
+        $query_parameters = array_merge($this->mergeOptions($defaulOptions, $options), array(
             'term' => $term
         ));
         $uri = $path . '?' . http_build_query($query_parameters);
@@ -90,16 +90,16 @@ class BolOpenApi
     public function listResults($type, $categoryIdAndRefinements, array $options = null)
     {
         $path = '/openapi/services/rest/catalog/v3/listresults/' . $type . '/' . $categoryIdAndRefinements;
-        $default_options = array(
-            'offset' => null,
-            'nrProducts' => 10,
-            'sortingMethod' => null,
-            'sortingAscending' => true,
-            'includeProducts' => false,
-            'includeCategories' => true,
-            'includeRefinements' => true
+        $defaulOptions = array(
+            'offset'                => null,
+            'nrProducts'            => 10,
+            'sortingMethod'         => null,
+            'sortingAscending'      => true,
+            'includeProducts'       => false,
+            'includeCategories'     => true,
+            'includeRefinements'    => true
         );
-        $options = $this->merge_options($default_options, $options);
+        $options = $this->mergeOptions($defaulOptions, $options);
 
         $uri = $path . '?' . http_build_query($options);
 
@@ -212,17 +212,17 @@ class BolOpenApi
     /**
      * Merges user options with default options
      * Also casts boolean options to string ('true', 'false')
-     * @param array $default_options
+     * @param array $defaulOptions
      * @param array $options
      * @return array merged options
      */
-    protected function merge_options(array $default_options, array $options = null)
+    protected function mergeOptions(array $defaulOptions, array $options = null)
     {
         if (is_null($options)) {
-            $options = $default_options;
+            $options = $defaulOptions;
         }
 
-        foreach ($default_options as $key => $value) {
+        foreach ($defaulOptions as $key => $value) {
             if (!isset($options[$key])) {
                 $options[$key] = $value;
             }
