@@ -39,6 +39,7 @@ Register the Netvlies namespace in your `app/autoload.php` file:
     $loader->registerNamespaces(array(
         // ...
         'Netvlies\\Bundle'         => __DIR__.'/../vendor/bundles',
+        'Buzz'                     => __DIR__.'/../vendor/Buzz/lib',
         // ...
     ));
 
