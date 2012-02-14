@@ -129,17 +129,17 @@ class Computer extends Product
     /**
      * @param string $manufacturerProductNumer
      */
-    public function setManufacturerProductNumer($manufacturerProductNumer)
+    public function setManufacturerProductNumber($manufacturerProductNumer)
     {
-        $this->manufacturerProductNumer = $manufacturerProductNumer;
+        $this->manufacturerProductNumber = $manufacturerProductNumer;
     }
 
     /**
      * @return string
      */
-    public function getManufacturerProductNumer()
+    public function getManufacturerProductNumber()
     {
-        return $this->manufacturerProductNumer;
+        return $this->manufacturerProductNumber;
     }
 
     /**
