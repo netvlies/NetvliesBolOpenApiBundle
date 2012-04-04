@@ -33,7 +33,11 @@ class NetvliesBolOpenApiExtension extends Extension
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
 
-        $container->setParameter('netvlies_bol_open_api.api.access_key', $config['access_key']);
-        $container->setParameter('netvlies_bol_open_api.api.secret_access_key', $config['secret_access_key']);
+        if (isset($config['access_key'])) {
+            $container->setParameter('netvlies_bol_open_api.api.access_key', $config['access_key']);
+        }
+        if (isset($config['access_key'])) {
+            $container->setParameter('netvlies_bol_open_api.api.secret_access_key', $config['secret_access_key']);
+        }
     }
 }

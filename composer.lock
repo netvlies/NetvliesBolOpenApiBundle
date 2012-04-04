@@ -1,0 +1,28 @@
+{
+    "hash": "558c6c555473b3962b7938c52d308e39",
+    "packages": [
+        {
+            "package": "doctrine/common",
+            "version": "2.2.1"
+        },
+        {
+            "package": "kriswallsmith/buzz",
+            "version": "v0.5"
+        },
+        {
+            "package": "netvlies/bol-openapi-php-sdk",
+            "version": "dev-master",
+            "source-reference": "3a2858177b77e83b1c623776431af001dfa4c9ea"
+        },
+        {
+            "package": "symfony/symfony",
+            "version": "dev-master",
+            "source-reference": "71c9dc31f4ba9c93950503e4a92586a2811e8bf9"
+        },
+        {
+            "package": "twig/twig",
+            "version": "1.6.4"
+        }
+    ],
+    "aliases": []
+}

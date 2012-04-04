@@ -1,0 +1,14 @@
+{
+    "name": "netvlies/bolopenapi-bundle",
+    "description": "The Bol.com Open Api is an RESTfull API wich you can use to communicate with the Bol.com webshop catalogue. This bundle makes it very easy to use this API as a service within your Symfony 2 application.",
+    "require": {
+        "netvlies/bol-openapi-php-sdk": "dev-master",
+        "symfony/symfony": ">=2.0"
+    },
+    "authors": [
+        {
+            "name": "Kristian Zondervan",
+            "email": "kristian.zondervan@gmail.com"
+        }
+    ],
+}

@@ -1,4 +1,5 @@
-phpunit.xml
 coverage
-vendor/symfony
-vendor/Buzz
+/.idea
+/composer.phar
+/vendor
+phpunit.xml
