@@ -6,7 +6,7 @@ The [Bol.com Open Api](http://developers.bol.com/documentatie/handleiding/) is a
 
 You need to have a developer key to use this API. You can get one by [registering at the Bol.com developer center](https://developers.bol.com/inloggen/?action=register).
 
-**NOTE** this bundle is in development and cannot be used in an production enviroment.
+**NOTE** this bundle is in development and cannot yet be used in an production enviroment.
 
 ## License
 This bundle is released under the MIT license. See the complete license here:
@@ -21,7 +21,10 @@ Add the following to your `deps` file:
     [Buzz]
         git=git://github.com/kriswallsmith/Buzz.git
         target=/Buzz
-
+    
+    [bol-openapi-php-sdk]
+        git=git://github.com/netvlies/bol-openapi-php-sdk.git
+    
     [NetvliesBolOpenApiBundle]
         git=git://github.com/netvlies/NetvliesBolOpenApiBundle.git
         target=/bundles/Netvlies/Bundle/BolOpenApiBundle
@@ -35,8 +38,9 @@ Register the Netvlies namespace in your `app/autoload.php` file:
 
     $loader->registerNamespaces(array(
         // ...
-        'Netvlies\\Bundle'         => __DIR__.'/../vendor/bundles',
-        'Buzz'                     => __DIR__.'/../vendor/Buzz/lib',
+        'Netvlies\\Bundle'          => __DIR__.'/../vendor/bundles',
+        'Buzz'                      => __DIR__.'/../vendor/Buzz/lib',
+        'BolOpenApi'                => __DIR__.'/../vendor/bol-openapi-php-sdk/src',
         // ...
     ));
 
@@ -128,14 +132,9 @@ The products operation gets detailed information for products.
     }
 
 ## Documentation
-Further documentation about the API can be found at the [Bol.com developer center](http://developers.bol.com/documentatie/handleiding/).
+Take a look at the [Bol OpenApi PHP SDK](https://github.com/netvlies/bol-openapi-php-sdk) for more examples and configuration settings. Further documentation about the API can be found at the [Bol.com developer center](http://developers.bol.com/documentatie/handleiding/).
 
 ## Testing
 Running the tests from the projectfolder of your Symfony 2 application:
 
     phpunit -c app/ vendor/bundles/Netvlies/Bundle/BolOpenApiBundle/
-
-## Todo
-- product mapping with product type properties (for now only general values are implemented)
-- add enumeration class for fixed options
-- increase unit test code coverage
