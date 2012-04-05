@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/netvlies/NetvliesBolOpenApiBundle.png)](http://travis-ci.org/netvlies/NetvliesBolOpenApiBundle)
 
-The [Bol.com Open Api](http://developers.bol.com/documentatie/handleiding/) is an RESTfull API wich you can use to communicate with the Bol.com webshop catalogue. This bundle makes it very easy to use this API as a service within your Symfony 2 application.
+The [Bol.com Open Api](http://developers.bol.com/documentatie/handleiding/) is an RESTfull API wich you can use to communicate with the Bol.com webshop catalogue. This bundle registers the [Bol OpenAPi PHP SDK](https://github.com/netvlies/bol-openapi-php-sdk) in the denpendency injection container wich makes it very easy to use this API as a service within your Symfony 2 application. 
 
 You need to have a developer key to use this API. You can get one by [registering at the Bol.com developer center](https://developers.bol.com/inloggen/?action=register).
 
@@ -12,9 +12,6 @@ You need to have a developer key to use this API. You can get one by [registerin
 This bundle is released under the MIT license. See the complete license here:
     
     Resources/meta/LICENSE
-
-## Dependencies
-- [Buzz](https://github.com/kriswallsmith/Buzz): PHP 5.3's lightweight HTTP client
 
 ## Installation
 
